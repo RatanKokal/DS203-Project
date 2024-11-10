@@ -10,7 +10,7 @@ links = []
 # Read video queries from the text file
 with open('mar.txt', "r") as file:
     for line in file:
-        query = line.strip()  # Add artist name for a more specific search
+        query = line.strip()  + " Bhavgeet" # Add artist name for a more specific search
         results = YoutubeSearch(query, max_results=1).to_dict()
         for result in results:
             video_id = result["id"]

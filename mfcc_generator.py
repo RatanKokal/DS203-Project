@@ -29,7 +29,7 @@ current_directory = os.getcwd()
 
 # Loop through all MP3 files in the directory
 for filename in os.listdir(current_directory):
-    if filename.endswith('.mp3'):
+    if filename.endswith('Gori Gori Pan Phulasarkhi Chhan with lyrics  Asha Bhosle  Kilbil.mp3'):
         filepath = os.path.join(current_directory, filename)
         print(f"Processing {filename}...")
         

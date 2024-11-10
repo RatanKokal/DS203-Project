@@ -1,50 +1,125 @@
-Zhunzha Karta (Aai Maaza Prasanna)
-Jivala Pani Dya (Bhau Daji Ladke)
-Ghar Aali Pori (Rang Maza Vegla)
-Mazi Jaan (Bhaiyya Nasta Karuna Aala)
-Duniya Maza Jiv Laage (Duniya Maza Jiv Laage)
-Yed Lagla (Chhoti Si Baat)
-Pudhe Kahi Naahi (Doli Saja Ke Rakhna)
-Aai Mala Vachav (Devta Jhalya Rasha)
-Kasa Hota Sathi (Swaas)
-Ya Gharat Kasa (Jivhala Gharat Kasa)
-Dharamveere Sitaram (Dharamveer)
-Ghar Ghar Jhale (Raja Shivaji)
-Mangal Pandey (Mangal Pandey)
-Mala Jagaychay (Pangharat Chalu)
-Sagar Darya (Chandramukhi)
-Jivan Gungun (Jivan Gungun)
-Chhodu Ya Bhatkya (Karnataki)
-Jeev Majha Bawa (Majhya Manacha Vasa)
-Bhagwan Maza Jaga (Mahashakti)
-Tu Mala Sangati (Sadhana Aaiye Sathi)
-Mast Rahi Me (Mast Rahi Me)
-Saath Hai (Saath Hai)
-Khari Masti (Mangal Pandey)
-Kahi Jhadli Batti (Mangal Pandey)
-Man Vasant Aala (Duniya Majhya Koli)
-Raat Bhar (Ghar Ghar Rangoli)
-Tu Jivala Kasa (Yashwant Ghosh)
-Aashirwad (Prashna Udaas Dila)
-Nanda Jhalali (Katyar Kaljat Ghusli)
-Masti Ranga (Masti Ranga)
-Sathi Re (Tujhya Raat Shari)
-Ghar Ghar Zindagi (Majhya Koli Pura)
-Chand Magal (Chand Magal)
-Mast Hawa (Mast Hawa)
-Duniya Majha Jivan (Duniya Majha Jivan)
-Aai Gharache (Mangal Pandey)
-Chal Raahi (Raahi)
-Sukhacha Pal (Sukhacha Pal)
-Aai Tu Zhalasi (Sathi Mi Raghunath)
-Tu Duniye (Tu Duniye)
-Mazi Jindagi (Mazi Jindagi)
-Aashirwad Bhav (Aashirwad Bhav)
-Dharm Veer (Dharm Veer)
-Thoda Jaga Thoda Nasha (Majhya Koli Pura)
-Jivan Purna (Jivan Purna)
-Me Ghumi Me Bhalu (Duniya Majha Jivan)
-Jivacha Shodho (Shodho Jivan)
-Mitra Jaga (Mitra Jaga)
-Dil Dila Dila (Dil Dila Dila)
-Tumhi Sangat (Tumhi Sangat)
+Ashi Kashi Gharat Jhali
+Ashi Najar Ghataki Bai
+Ashi Pakhare Yeti Aanik
+Ashi Sanj Ka
+Ashich Amuchi Aai Asati
+Ashich Sath Rahu De
+Asa Bebhan Ha Vara
+Asa Mi Kay Gunha Kela
+Asach Yava Pahat Vara
+Asave Ghara Te Apule Chan
+Asen Mi Nasen Mi
+Adnyat TeerthaYatra
+Aaicha Chakula Chimukala
+Aakash Pangharooni Jag
+Aakashi Phulala
+Akashichya Antarali
+Aaj Achanak Gatha Pade
+Aaj Udas Udas Dur
+Aaj Ekantat Halavi
+Aaj Gokulat Rang
+Aaj Pahate Umale Swapna
+Aaj Mazya Aksharana
+Aaj Rani Purvichi Ti
+Aaj Hriday Mam
+Aathav Yeto Maj
+Ashi Kashi Gharat Jhali
+Ashi Najar Ghataki Bai
+Ashi Pakhare Yeti Aanik
+Ashi Sanj Ka
+Ashich Amuchi Aai Asati
+Ashich Sath Rahu De
+Asa Bebhan Ha Vara
+Asa Mi Kay Gunha Kela
+Asach Yava Pahat Vara
+Asave Ghara Te Apule Chan
+Asen Mi Nasen Mi
+Adnyat TeerthaYatra
+Aaicha Chakula Chimukala
+Aakash Pangharooni Jag
+Aakashi Phulala
+Akashichya Antarali
+Aaj Achanak Gatha Pade
+Aaj Udas Udas Dur
+Aaj Ekantat Halavi
+Aaj Gokulat Rang
+Aaj Pahate Umale Swapna
+Aaj Mazya Aksharana
+Aaj Rani Purvichi Ti
+Aaj Hriday Mam
+Aathav Yeto Maj
+Aathavani Datatat  
+Aata Jagayache Ase Majhe  
+Aata Visavyache Kshan  
+Aatach Amrutachi Barasun  
+Aanandghan Kshananchya  
+Aamuche Naav Aasu Ga  
+Aala Aala Ga Sugandha  
+Aala Paus Matichya Vasat  
+Aala Swapnancha  
+Aala Ha Janu Chandrama  
+Aali Tujhya Dari Radha  
+Aali Diwali Mangaldayi  
+Aali Rasal Ambevali  
+Aalis Sanjveli Gheun  
+Ale Manat Majhya  
+Aavaj Muralica Aala  
+Aas Aahe Antari Yaa  
+Ittech Aani Ya Bandhavar  
+Ughad Ughad Pakali  
+Ughad Urmile Kavad  
+Ughad Daar Ughad Daar  
+Ughadya Punha Jahalya  
+Ujadlyavari Sakhya Nighun  
+Uthi Govinda Uthi Gopala
+Utarali Sanj Hi Dharevari  
+Unad Paus Ashant Paus  
+Upavani Gaat Kokila  
+Umatali Ramachi Paule  
+Urmile Trivar Vandan Tula  
+Uncha Uncha Majha Zoka  
+Umbarthryavar Maap Thevile  
+Utha Janaki Mangal Ghatika  
+Ootha Rajasa Uthi Rajiva  
+Utha Rajasa Ghan Nila  
+Utha Re Raghava Ughad  
+Oon Aso Va Aso Savali  
+Ek Ves Olandali  
+Ekatch Bhatakat Nadikathi  
+Ekatech Yene Yethe  
+Ekatyane Ekate Gardit  
+Ektari Soor Jani  
+Ekatra Gumphun Jivit Dhage  
+Ekach Yave Sakhaya  
+Eka Talyat Hoti Badake  
+Ekach Ekach Vele  
+Evadhe Tari Karun Ja  
+Aikalat Ka Hatta Nava  
+Oti Bhara Ga Oti Bhara  
+Otit Ghatali Mulagi
+Olakha Pahili Gali Hasate  
+Olakhali Mi Aapulya  
+Anganat Khele Raja  
+Angani Gulmohar Phulala  
+Angani Majhya Manachya  
+Antarichi Vishal Swapne  
+Antarichya Apurya Asha  
+Antarichya Goodh Garbhi  
+Antarangi Rangalale Geet  
+Andharachi Khant Tu  
+Ambarat Najukashi Chandrakar  
+Ambaratalya Nilya Ghananchi  
+Kartavyane Ghadato Manus  
+Kadhi Achanak Sang  
+Kadhi Kuthe Na Bhetanar  
+Kadhi Gaur Basanti  
+Kadhi Rimzim Zaranara  
+Kadhi Sanjaveli Mala  
+Kalika Kasha Ga Bai  
+Kalekalene Chandra Vadhato  
+Kalpavruksha Kanyesathi  
+Kashas Rusava Sakhaye  
+Kashi Tuj Samajavu Ga  
+Kashi Kaal Nagini  
+Kashi Guljar Mani Phulali
+

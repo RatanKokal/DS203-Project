@@ -4,7 +4,69 @@ import librosa
 import numpy as np
 from scipy.stats import skew, kurtosis
 
-def create_dataset_from_all_folders(parent_folder):
+def calculate_additional_features(data, window_size=30):
+    """Calculate additional features averaged over a moving window."""
+    # Peak to peak spread in windows
+    peak_to_peak_spread = []
+    for i in range(0, len(data) - window_size + 1, window_size):
+        window = data[i:i + window_size]
+        peak_to_peak_spread.append(np.max(window) - np.min(window))
+    avg_peak_to_peak = np.mean(peak_to_peak_spread)
+    
+    # RMS (Root Mean Square)
+    rms = np.sqrt(np.mean(np.square(data)))
+    
+    # Spectral Centroid
+    freqs = np.fft.fftfreq(len(data))
+    spec = np.abs(np.fft.fft(data))
+    spectral_centroid = np.sum(freqs * spec) / np.sum(spec)
+    
+    # Range value (max - min)
+    range_val = np.max(data) - np.min(data)
+    
+    # Max and min values
+    max_val = np.max(data)
+    min_val = np.min(data)
+    
+    return {
+        'avg_peak_to_peak': avg_peak_to_peak,
+        'rms': rms,
+        'spectral_centroid': spectral_centroid,
+        'range_val': range_val,
+        'max_val': max_val,
+        'min_val': min_val
+    }
+
+def calculate_max_delta_change(data, slab_size=105, window_size=15):
+    """Calculate the sum of max - min for continuously rising or falling sequences in slabs."""
+    delta_changes = []
+    for slab_start in range(0, len(data) - slab_size + 1, slab_size):
+        slab = data[slab_start:slab_start + slab_size]
+        for i in range(0, len(slab) - window_size + 1, window_size):
+            window = slab[i:i + window_size]
+            rising, falling = [window[0]], [window[0]]
+            for j in range(1, len(window)):
+                if window[j] >= window[j-1]: rising.append(window[j])
+                else:
+                    if len(rising) > 1: delta_changes.append(max(rising) - min(rising))
+                    rising = [window[j]]
+                if window[j] <= window[j-1]: falling.append(window[j])
+                else:
+                    if len(falling) > 1: delta_changes.append(max(falling) - min(falling))
+                    falling = [window[j]]
+            if len(rising) > 1: delta_changes.append(max(rising) - min(rising))
+            if len(falling) > 1: delta_changes.append(max(falling) - min(falling))
+    total_frames = len(data)
+    return np.sum(delta_changes) / total_frames if total_frames > 0 else 0
+
+def calculate_moving_average_abs_diff(data, window_size=100):
+    """Calculate the sum of absolute differences between moving average and actual values."""
+    moving_average = np.convolve(data, np.ones(window_size)/window_size, mode='valid')
+    actual_values = data[window_size - 1:]
+    abs_diff = np.abs(moving_average - actual_values)
+    return np.sum(abs_diff) / len(data)
+
+def create_dataset_from_all_folders(parent_folder, window_size=30):
     # Initialize an empty list to hold the feature vectors
     features_list = []
 
@@ -14,7 +76,7 @@ def create_dataset_from_all_folders(parent_folder):
         folder_path = os.path.join(parent_folder, folder_name)
 
         # Check if it's a directory
-        if os.path.isdir(folder_path):
+        if os.path.isdir(folder_path) and folder_name != '.git' and folder_name != 'Testing' and folder_name != 'plots':
             print(f"Processing folder: {folder_name} (Class {class_label})")
             
             # Loop through all CSV files in the current folder
@@ -37,7 +99,7 @@ def create_dataset_from_all_folders(parent_folder):
                     rms_features = []
                     skew_features = []
                     kurtosis_features = []
-                    delta_features = []
+                    additional_feature_list = []  # To hold additional features for 1st and 2nd MFCCs
 
                     # Loop through the first 20 MFCCs
                     for i in range(20):
@@ -50,11 +112,37 @@ def create_dataset_from_all_folders(parent_folder):
                         rms_features.append(np.sqrt(np.mean(np.square(mfcc_all[:, i]))))  # RMS of the current MFCC
                         skew_features.append(skew(mfcc_all[:, i]))  # Skewness of the current MFCC
                         kurtosis_features.append(kurtosis(mfcc_all[:, i]))  # Kurtosis of the current MFCC
-                        # delta_features.append(np.mean(delta_mfcc))  # Mean of delta of the current MFCC
+
+                    # Calculate additional features for the 1st and 2nd MFCCs
+                    additional_features_1st = calculate_additional_features(mfcc_all[:, 0], window_size)
+                    additional_features_2nd = calculate_additional_features(mfcc_all[:, 1], window_size)
                     
-                    # Combine all features (mean, std, RMS, skewness, kurtosis, delta) into one list
+                    max_delta_mfcc_1 = calculate_max_delta_change(mfcc_all[:, 0], slab_size=105, window_size=15)
+                    max_delta_mfcc_2 = calculate_max_delta_change(mfcc_all[:, 1], slab_size=105, window_size=15)
+            
+                    moving_avg_abs_diff_1st = calculate_moving_average_abs_diff(mfcc_all[:, 0], window_size=100)
+                    moving_avg_abs_diff_2nd = calculate_moving_average_abs_diff(mfcc_all[:, 1], window_size=100)
+                    
+                    # Combine additional features for the 1st and 2nd MFCCs
+                    additional_feature_list.extend([
+                        additional_features_1st['avg_peak_to_peak'],
+                        additional_features_1st['rms'],
+                        additional_features_1st['spectral_centroid'],
+                        additional_features_1st['range_val'],
+                        additional_features_1st['max_val'],
+                        additional_features_1st['min_val'],
+                        additional_features_2nd['avg_peak_to_peak'],
+                        additional_features_2nd['rms'],
+                        additional_features_2nd['spectral_centroid'],
+                        additional_features_2nd['range_val'],
+                        additional_features_2nd['max_val'],
+                        additional_features_2nd['min_val'],
+                        max_delta_mfcc_1, max_delta_mfcc_2, moving_avg_abs_diff_1st, moving_avg_abs_diff_2nd
+                    ])
+                    
+                    # Combine all features (mean, std, RMS, skewness, kurtosis, additional features) into one list
                     file_features = (feature_means + feature_stds + rms_features + 
-                                     skew_features + kurtosis_features)
+                                     skew_features + kurtosis_features + additional_feature_list)
                     
                     # Add the class label to the features list
                     file_features.append(class_label)
@@ -65,16 +153,23 @@ def create_dataset_from_all_folders(parent_folder):
             # Increment class label for the next folder
             class_label += 1
 
-    # Convert the list of features to a DataFrame
-    features_df = pd.DataFrame(features_list, columns=[
+    # Define column names
+    columns = [
         *[f'mean_mfcc{i+1}' for i in range(20)],
         *[f'std_mfcc{i+1}' for i in range(20)],
         *[f'rms_mfcc{i+1}' for i in range(20)],
         *[f'skew_mfcc{i+1}' for i in range(20)],
         *[f'kurtosis_mfcc{i+1}' for i in range(20)],
-        # *[f'mean_delta_mfcc{i+1}' for i in range(20)],
+        'avg_peak_to_peak_1st_MFCC', 'RMS_1st_MFCC', 'Spectral_Centroid_1st_MFCC', 
+        'Range_Val_1st_MFCC', 'Max_Val_1st_MFCC', 'Min_Val_1st_MFCC',
+        'avg_peak_to_peak_2nd_MFCC', 'RMS_2nd_MFCC', 'Spectral_Centroid_2nd_MFCC', 
+        'Range_Val_2nd_MFCC', 'Max_Val_2nd_MFCC', 'Min_Val_2nd_MFCC',
+        'max_delta_mfcc_1', 'max_delta_mfcc_2', 'moving_avg_abs_diff_1st', 'moving_avg_abs_diff_2nd',
         'Class'
-    ])
+    ]
+    
+    # Convert the list of features to a DataFrame
+    features_df = pd.DataFrame(features_list, columns=columns)
     
     # Save the features DataFrame to a CSV file
     output_file = os.path.join(parent_folder, 'database.csv')
@@ -84,4 +179,4 @@ def create_dataset_from_all_folders(parent_folder):
 
 # Example usage
 parent_folder = '.'  # Replace with the path to your parent folder containing subfolders
-create_dataset_from_all_folders(parent_folder)
+create_dataset_from_all_folders(parent_folder, window_size=30)

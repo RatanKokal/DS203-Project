@@ -11,7 +11,7 @@ links = []
 with open('nat.txt', "r") as file:
     for line in file:
         query = line.strip()  # Add artist name for a more specific search
-        results = YoutubeSearch(query, max_results=20).to_dict()
+        results = YoutubeSearch(query, max_results=100).to_dict()
         for result in results:
             video_id = result["id"]
             link = f"https://www.youtube.com/watch?v={video_id}"
