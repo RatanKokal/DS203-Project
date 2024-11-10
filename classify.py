@@ -6,7 +6,7 @@ from scipy.stats import skew, kurtosis
 import librosa
 
 # Load the trained Random Forest model and scaler
-rf_classifier = joblib.load('svm_(rbf_kernel)_model_1.pkl')  # Trained Random Forest model
+rf_classifier = joblib.load('svm_(rbf_kernel)_model.pkl')  # Trained Random Forest model
 scaler = joblib.load('scaler.pkl')  # Saved scaler for normalization
 
 def calculate_additional_features(data, window_size=30):
